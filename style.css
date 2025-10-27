@@ -1,0 +1,347 @@
+/* ===== Global Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Base Styling ===== */
+body {
+  font-family: "Outfit", sans-serif;
+  background-color: #fff;
+  color: #000;
+
+  scroll-behavior: smooth;
+}
+.top10 {
+  margin-top: 10px;
+}
+
+/* ===== App Container ===== */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* ===== Front Panel (Hero Section) ===== */
+.frontpanel {
+  font-family: "Source Code Pro", monospace;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.frontpanel .btn {
+  padding: 10px 50px;
+}
+.frontpanel p {
+  font-family: "Outfit";
+}
+.frontpanel img {
+  height: 30%;
+  width: auto;
+  margin-top: 10px;
+}
+
+/* ===== Navigation Bar ===== */
+.nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(230, 230, 230, 0.1);
+  padding: 10px 20px;
+  width: 60%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+/* When scrolled to pricing section */
+.nav.active {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: rgb(0, 0, 0);
+}
+.nav.active .login {
+  color: #000;
+  border: 1px solid #000;
+}
+
+.nav.active .bars{
+    background-color: black;
+}
+
+/* Logo or Title */
+.nav p {
+  font-family: "BBH Sans Hegarty", sans-serif;
+  font-size: 20px;
+}
+
+/* ===== Desktop Navigation ===== */
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+.nav ul li {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+.nav ul li:hover {
+  color: rgb(60, 144, 255);
+}
+
+/* ===== Buttons ===== */
+.btn {
+  padding: 12px 20px;
+  background-color: rgb(60, 144, 255);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 550;
+  transition: 0.2s ease;
+}
+.btn:hover {
+  background-color: rgb(8, 134, 245);
+}
+
+/* ===== Login / Signup Buttons ===== */
+.logsignin {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logsignin .login {
+  background-color: transparent;
+  border: 1px solid rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+.logsignin .login:hover {
+  background-color: rgb(60, 144, 255);
+  color: white;
+}
+
+/* ===== Mobile Menu (Hamburger Icon) ===== */
+.bars {
+  height: 28px;
+  width: auto;
+  cursor: pointer;
+  display: flex;
+}
+
+/* ===== Mobile Dropdown Menu ===== */
+.menu {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  width: 85%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  flex-direction: column;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease-in-out;
+  z-index: 20;
+
+  
+}
+
+.menu .logsignin{
+ margin-top: 10px;
+}
+.menu .login{
+    border: 1px solid black;
+    color: black;
+}
+.menu.active {
+  display: flex;
+  animation: slideDown 0.3s ease forwards;
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.menu ul li {
+  font-size: 18px;
+  color: #000;
+  cursor: pointer;
+}
+.menu ul li:hover {
+  color: rgb(60, 144, 255);
+}
+
+/* Pricing */
+.pricing{
+    height: 100vh;
+    width: 100vw;
+    justify-content: space-evenly;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    background-color: #8198a710;
+}
+.pricing .pack{
+    height: 50%;
+    
+    width: 24%;
+    margin-top: 20px;
+    padding: 50px ;
+    background-color: rgba(230, 230, 230, 0.384);
+    border-radius: 20px;
+
+
+}
+
+.pack ul{
+    margin-left: 20px;
+}
+.pack .btn{
+    padding: 10px 50px;
+}
+
+
+
+.shortabout{
+    height: 30vh;
+    width: 100vw;
+    padding: 20px;
+}
+.abouts{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    
+}
+.about{
+    border-radius: 20px;
+    padding: 20px;
+    
+    width: 24%;
+    background-color:rgb(8, 134, 245);
+    color: white;
+    height: 100%;
+}
+
+.about h1{
+    font-size: 80px;
+}
+.about p{
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .pricing{
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+    }
+    .pack ul{
+        list-style: none;
+        margin-left: 0;
+    }
+    .pricing .pack{
+        width: 100%;
+    }
+
+    .abouts{
+       overflow-x: scroll;
+    }
+    .about{
+        width: 120%;
+        height: 100%;
+        padding: 10px 20px;
+    }
+    .about p{
+        margin-top: 0;
+    }
+   
+}
+
+
+
+
+
+
+
+
+.all {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+}
+.bars{
+    display: none;
+    margin-right: 10px;
+}
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .nav {
+    width: 90%;
+    padding: 10px;
+  }
+ .nav .all{
+    display: none;
+ }
+  .bars {
+    display: block;
+  }
+  .frontpanel img {
+    height: 10%;
+  }
+  .frontpanel {
+    padding: 0 20px;
+  }
+  .pricing h2 {
+    font-size: 28px;
+  }
+  .pricing p {
+    font-size: 16px;
+  }
+}
