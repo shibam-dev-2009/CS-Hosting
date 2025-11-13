@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creative Hosting Checkout</title>
+    <link rel="stylesheet" href="checkout.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div class="greet">
+        <img src="./assets/order.png" alt="Cart" class="i" />
+        <h1>Hello Thank You</h1>
+      </div>
+      <div class="coutDet">
+        <h3>Order Summary</h3>
+        <p>
+          Thank you for choosing Creative Studio Hosting — your reliable web
+          hosting partner. Please review your order details below before
+          completing the payment.
+        </p>
+
+        <div class="details">
+
+          <div class="detail">
+            <h5>Plan</h5>
+            <h1 id="planprice"></h1>
+            <h2 id="plan-name"></h2>
+            <p id="plan-desc"></p>
+            <ul id="plan-features"></ul>
+          </div>
+        </div>
+
+        <div class="form">
+          <!-- modified: added hidden fields -->
+          <form action="https://formspree.io/f/mblqraqp" method="POST">
+            <h1>Details</h1>
+            <label>
+              Your email:
+              <input type="email" name="email" required />
+            </label>
+            <label>
+              Your name:
+              <input type="text" name="name" required/>
+            </label>
+            <label>
+              Your mobile number:
+              <input type="number" name="name" required/>
+            </label>
+
+            <label for="country">Country:
+            <select id="country" name="country" required>
+              <option value="">-- Select Country --</option>
+              <option value="India">India</option>
+              <option value="United States">United States</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Canada">Canada</option>
+              <option value="Australia">Australia</option>
+              <option value="Germany">Germany</option>
+              <option value="France">France</option>
+              <option value="Japan">Japan</option>
+              <option value="Singapore">Singapore</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+            <label>
+              Plan name:
+              <input type="text" id="planNameInput" name="plan_name" readonly />
+            </label>
+
+            <!-- hidden fields for plan description & features -->
+            <input type="hidden" id="planDescInput" name="plan_description" />
+            <input type="hidden" id="planFeaturesInput" name="plan_features" />
+
+            <button type="submit">Continue</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Get stored data
+      const planData = JSON.parse(localStorage.getItem("checkoutPlan"));
+
+      if (planData) {
+        document.getElementById("plan-name").textContent = planData.name;
+        document.getElementById("planprice").textContent = planData.price;
+        document.getElementById("plan-desc").textContent = planData.description;
+
+        const featuresList = document.getElementById("plan-features");
+        featuresList.innerHTML = "";
+
+        planData.features.forEach((feature) => {
+          const li = document.createElement("li");
+          li.textContent = feature;
+          featuresList.appendChild(li);
+        });
+
+        // ✅ Fill form fields with localStorage data
+        document.getElementById("planprice").value = planData.price || "";
+        document.getElementById("planNameInput").value = planData.name || "";
+        document.getElementById("planDescInput").value =
+          planData.description || "";
+        document.getElementById("planFeaturesInput").value = planData.features
+          ? planData.features.join(", ")
+          : "";
+      } else {
+        // If no plan is found, redirect back to plans page
+        window.location.href = "index.html";
+      }
+    </script>
+  </body>
+</html>
